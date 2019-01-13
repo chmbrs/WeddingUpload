@@ -6,10 +6,17 @@
         <meta charset="utf-8">
         <title>Wedding Photos</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
 
         <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap -->
+        <link href="{% static 'weddingupload/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+        <!-- Jasny Bootstrap -->
+        <link href="{% static 'weddingupload/css/jasny-bootstrap.min.css' %}" rel="stylesheet" media="screen">
 
         <link rel="stylesheet" href="{% static 'weddingupload/css/master.css' %}">
     </head>
@@ -19,17 +26,16 @@
         <nav class="navbar mynav" role="navigation" id="navbar">
 
           <div class="container">
-            <a class="navbar-brand mynav" href="{% url 'home' %}">Wedding Photos</a>
-
+            <a class="navbar-brand" href="{% url 'home' %}">Wedding Photos</a>
             <ul class="nav navbar-nav navbar-right">
               {% if user.is_authenticated %}
-                <li><a href="#">Photos</a></li>
-                <li><a href="#">Upload a Photo</a></li>
-                <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+                <li class="nav-item"><a href="#">Photos</a></li>
+                <li class="nav-item"><a href="#">Upload a Photo</a></li>
+                <li class="nav-item"><a href="{% url 'accounts:logout' %}">Log Out</a></li>
               {% else %}
-                <li><a href="#">Photos</a></li>
-                <li><a href="{% url 'accounts:login' %}">Log In</a></li>
-                <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                <li class="nav-item"><a href="#">Photos</a></li>
+                <li class="nav-item"><a href="{% url 'accounts:login' %}">Log In</a></li>
+                <li class="nav-item"><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
               {% endif %}
             </ul>
 
@@ -38,11 +44,38 @@
 
         <div class="container mycontent">
 
+
           {% block content %}
 
           {% endblock %}
 
+          <!-- <p id="status">Please select a photo to upload.</p>
+          <img id="preview" src="/static/images/upload.png" />
+          <input type="file" id="file_input"/>
+
+          <form enctype="multipart/form-data" method="POST" action="/submit_form/">
+            <input type="text" name="photo-title" placeholder="Photo Title">
+            <input type="submit" value="Upload Photo">
+          </form> -->
+
+
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+              <img data-src="holder.js/100%x100%" alt="...">
+            </div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width:window.innerWidth; max-height:window.innerHeight;"></div>
+            <div>
+              <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            </div>
+          </div>
+
         </div>
 
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="{% static 'weddingupload/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'weddingupload/js/jasny-bootstrap.min.js' %}"></script>
     </body>
 </html>
