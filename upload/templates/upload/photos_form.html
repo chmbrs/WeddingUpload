@@ -4,7 +4,7 @@
 {% block content %}
   {% if user.is_authenticated %}
     <h2>Upload Your Photo</h2>
-    <h4>(The bride has to aprove it)</h4>
+    <h4>for the bride to aprove it.</h4>
 
   <!-- <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -12,7 +12,7 @@
     <button type="submit">Submit</button>
   </form> -->
 
-    <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-left: auto; margin-right: auto; width: auto; max-height: 60vw;">
+    <div class="fileinput fileinput-new" data-provides="fileinput" style="width: auto; max-height: 60vw;">
       <div class="fileinput-new thumbnail" style="width: 100%">
         <img src="{% static 'images/upload.png' %}" alt="...">
       </div>
@@ -35,14 +35,16 @@
           <th>Name</th>
           <th>Uploaded at</th>
           <th>Size</th>
+          <th>Publish?</th>
         </tr>
       </thead>
       <tbody>
-        {% for document in documents %}
+        {% for photo in photos %}
           <tr>
-            <td><a href="{{ document.upload.url }}" target="_blank">{{ document.upload.name }}</a></td>
-            <td>{{ document.uploaded_at }}</td>
-            <td>{{ document.upload.size|filesizeformat }}</td>
+            <td><a href="{{ photo.upload.url }}" target="_blank">{{ photo.upload.name }}</a></td>
+            <td>{{ photo.uploaded_at }}</td>
+            <td>{{ photo.upload.size|filesizeformat }}</td>
+            <td>{{ photo.publish }}</td>
           </tr>
         {% empty %}
           <tr>
