@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     #Own Apps
     'accounts',
+    'upload',
 ]
 
 MIDDLEWARE = [

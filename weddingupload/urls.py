@@ -19,6 +19,8 @@ from django.urls import path
 from django.urls import include
 from . import views
 
+from upload import views as upload_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePage.as_view(), name='home'),
@@ -26,5 +28,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('test/', views.TestPage.as_view(), name='test'),
     path('thanks/', views.ThanksPage.as_view(), name='thanks'),
-    # path('upload/', views.DocumentCreateView.as_view(), name='upload'),
+    path('upload/', upload_views.DocumentCreateView.as_view(), name='upload'),
 ]
