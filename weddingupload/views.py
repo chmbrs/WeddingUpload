@@ -8,6 +8,5 @@ class ThanksPage(TemplateView):
     """docstring for ThanksPage."""
     template_name = 'thanks.html'
 
-
 class HomePage(TemplateView):
     template_name = 'index.html'
