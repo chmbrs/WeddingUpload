@@ -157,7 +157,7 @@ STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 DEFAULT_FILE_STORAGE = 'weddingupload.storage_backends.MediaStorage'
 
 
-LOGIN_REDIRECT_URL = 'test'
+LOGIN_REDIRECT_URL = 'upload'
 LOGOUT_REDIRECT_URL = 'thanks'
 
 # Activate Django-Heroku.

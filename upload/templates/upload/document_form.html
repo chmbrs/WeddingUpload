@@ -1,35 +1,59 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
-  <h2>Public Uploads</h2>
-  <h3>Upload to Amazon S3</h3>
+  {% if user.is_authenticated %}
+    <h2>Upload Your Photo</h2>
+    <h4>(The bride has to aprove it)</h4>
 
-  <form method="post" enctype="multipart/form-data">
+  <!-- <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
-  </form>
+  </form> -->
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Uploaded at</th>
-        <th>Size</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for document in documents %}
+    <div class="fileinput fileinput-new" data-provides="fileinput" style="margin-left: auto; margin-right: auto; width: 100%; max-height: 60vw;">
+      <div class="fileinput-new thumbnail" style="width: 100%">
+        <img src="{% static 'images/upload.png' %}" alt="...">
+      </div>
+      <div class="fileinput-preview fileinput-exists thumbnail" style="margin-left: auto; margin-right: auto; max-width: 100%;"></div>
+      <div>
+        <!-- <span class="btn btn-primary btn-lg btn-block btn-file"><span class="fileinput-new">Select Image</span><span class="fileinput-exists">Change</span><input type="file" id="file-input"></span> -->
+        <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="text" name="photo-title" class="form-control form-control-lg fileinput-exists" style="margin-top: 15px; margin-bottom: 5px" placeholder="Photo Title">
+          <input type="submit" class="btn btn-success btn-lg btn-block fileinput-exists" value="Upload Photo">
+        </form>
+      </div>
+    </div>
+
+
+    <table>
+      <thead>
         <tr>
-          <td><a href="{{ document.upload.url }}" target="_blank">{{ document.upload.name }}</a></td>
-          <td>{{ document.uploaded_at }}</td>
-          <td>{{ document.upload.size|filesizeformat }}</td>
+          <th>Name</th>
+          <th>Uploaded at</th>
+          <th>Size</th>
         </tr>
-      {% empty %}
-        <tr>
-          <td colspan="3">No data.</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {% for document in documents %}
+          <tr>
+            <td><a href="{{ document.upload.url }}" target="_blank">{{ document.upload.name }}</a></td>
+            <td>{{ document.uploaded_at }}</td>
+            <td>{{ document.upload.size|filesizeformat }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3">No data.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h1> Welcome to Wedding Upload!</h1>
+      <h2>Please <a href="/accounts/login/">Log In</a> or <a href="/accounts/signup/">Sign Up</a> to view, upload and comment the photos.</h2>
+    {% endif %}
+
 {% endblock %}
