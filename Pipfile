@@ -11,5 +11,7 @@ python_version = "3.6"
 django-heroku = "*"
 gunicorn = "*"
 django-bootstrap4 = "*"
+boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
