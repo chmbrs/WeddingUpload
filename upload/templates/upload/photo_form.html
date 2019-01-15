@@ -6,53 +6,20 @@
     <h2>Upload Your Photo</h2>
     <h4>for the bride to aprove it.</h4>
 
-  <!-- <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-  </form> -->
-
-    <div class="fileinput fileinput-new" data-provides="fileinput" style="width: auto; max-height: 60vw;">
-      <div class="fileinput-new thumbnail" style="width: 100%">
-        <img src="{% static 'images/upload.png' %}" alt="...">
+    <div class="fileinput fileinput-new" data-provides="fileinput" style="max-height: 60vw;">
+      <div class="fileinput-new thumbnail">
+        <img src="{% static 'images/upload.png' %}" alt="Upload" style="width: 100%; height:auto;">
       </div>
-      <div class="fileinput-preview fileinput-exists thumbnail" style="margin-left: auto; margin-right: auto; max-width: 100%;"></div>
-      <div>
+      <div class="fileinput-preview fileinput-exists thumbnail" style="widht:100%;"></div>
         <!-- <span class="btn btn-primary btn-lg btn-block btn-file"><span class="fileinput-new">Select Image</span><span class="fileinput-exists">Change</span><input type="file" id="file-input"></span> -->
-        <form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="text" name="photo-title" class="form-control form-control-lg fileinput-exists" style="margin-top: 15px; margin-bottom: 5px" placeholder="Photo Title">
-          <input type="submit" class="btn btn-success btn-lg btn-block fileinput-exists" value="Upload Photo">
-        </form>
+        <div class="form-control form-control-lg">
+          <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- <input type="text" name="photo-title" class="form-control form-control-lg fileinput-exists" style="margin-top: 15px; margin-bottom: 5px" placeholder="Photo Title"> -->
+            <input type="submit" class="btn btn-outline-primary btn-lg btn-block fileinput-exists" value="Upload Photo">
+          </form>
       </div>
-    </div>
-
-
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Uploaded at</th>
-          <th>Size</th>
-          <th>Publish?</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for photo in photos %}
-          <tr>
-            <td><a href="{{ photo.upload.url }}" target="_blank">{{ photo.upload.name }}</a></td>
-            <td>{{ photo.uploaded_at }}</td>
-            <td>{{ photo.upload.size|filesizeformat }}</td>
-            <td>{{ photo.publish }}</td>
-          </tr>
-        {% empty %}
-          <tr>
-            <td colspan="3">No data.</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
     {% else %}
       <h1> Welcome to Wedding Upload!</h1>
       <h2>Please <a href="/accounts/login/">Log In</a> or <a href="/accounts/signup/">Sign Up</a> to view, upload and comment the photos.</h2>
