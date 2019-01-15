@@ -30,8 +30,7 @@
           {% if photo.publish %}
             <tr>
               <td>
-                <img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}" style="width: 100%; height: auto;">
-
+                <a href="{{ photo.upload.url }}" target="_blank" ><img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}" style="width: 100%; height: auto;"></a>
               </td>
               <td>{{ photo.uploaded_at }}</td>
               <td><span class="likesnum">{{ photo.num_of_likes }}</span></td>
