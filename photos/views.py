@@ -17,3 +17,10 @@ class DocumentCreateView(CreateView):
         photos = Photo.objects.all()
         context['photos'] = photos
         return context
+
+# def home(request):
+#     articles = Article.objects.all().prefetch_related('likes')
+#     for a in articles:
+#         a.is_liked = (request.user in a.likes.all())
+#
+#     return render(request, 'home.html', {'articles': articles})

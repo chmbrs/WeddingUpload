@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block head %}
+<script src="{% static 'js/sorttable.js' %}"></script>
+{% endblock %}
+
 {% block content %}
   {% if user.is_authenticated %}
-    <h2>Upload Your Photo</h2>
-    <h4>for the bride to aprove it.</h4>
+    <h2>Photos</h2>
+    <h4>You can click on the headers to sort...</h4>
 
   <!-- <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -12,21 +16,35 @@
     <button type="submit">Submit</button>
   </form> -->
 
-    <table>
+    <table class="sortable">
       <thead>
         <tr>
           <th>Photo</th>
           <th>Uploaded at</th>
-          <th>Size</th>
+          <th>Likes</th>
+          <th>Like</th>
         </tr>
       </thead>
       <tbody>
         {% for photo in photos %}
           {% if photo.publish %}
             <tr>
-              <td><img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}"></td>
+              <td><img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}" style="width: 100%; height: auto;"></td>
               <td>{{ photo.uploaded_at }}</td>
-              <td>{{ photo.upload.size|filesizeformat }}</td>
+              <td><span class="likesnum">{{ photo.get_num_of_likes }}</span></td>
+              <td>
+                <button type="button" class="btn btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="AddValue()">
+                  Like
+                </button>
+                <script>
+                  var startingNumber = 0;
+                    function AddValue()
+                    {
+                       startingNumber++;
+                       $('.likesnum').text(startingNumber);
+                    }
+                  </script>
+              </td>
             </tr>
           {% endif %}
         {% empty %}
