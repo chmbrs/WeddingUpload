@@ -20,7 +20,7 @@
       <thead>
         <tr>
           <th>Photo</th>
-          <th>Uploaded at</th>
+          <th>Uploaded</th>
           <th>Likes</th>
           <th>Like</th>
         </tr>
@@ -31,11 +31,21 @@
             <tr>
               <td><img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}" style="width: 100%; height: auto;"></td>
               <td>{{ photo.uploaded_at }}</td>
-              <td><span class="likesnum">{{ photo.get_num_of_likes }}</span></td>
+              <td><span class="likesnum">{{ photo.likes.count }}</span></td>
               <td>
-                <button type="button" class="btn btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="AddValue()">
-                  Like
-                </button>
+                {% if user in photo.likes.all %}
+                  <a href="{% url 'likes:leave' %}"
+                    class="btn btn-outline-danger"> Unlike </a>
+                {% else %}
+                  <a href="{% url 'likes:join' %}"
+                    class="btn btn-danger"> Like </a>
+
+                  <!-- <button type="button" class="btn btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="AddValue()">
+                    Like
+                  </button> -->
+
+                {% endif %}
+
                 <script>
                   var startingNumber = 0;
                     function AddValue()
