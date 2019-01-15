@@ -5,7 +5,7 @@ A simple upload app for wedding photos.
 
 ## Features
 
-- Upload photos directly to S3.
+- Preview and upload photos directly to S3.
 - Approve or not the photos uploaded by the guests.
 - Like pictures and sort them.
 - Latest Python 3.6 runtime environment and Django 2.
@@ -43,6 +43,13 @@ Quit the server with CONTROL-C.
 ```
 7. Create a superuser and enter the Django admin to approve and publish the uploaded photos.
 
+## Screenshots
+
+![Screenshot1](/static/images/screen1.png?raw=true "Screenshot1")
+![Screenshot2](/static/images/screen2.png?raw=true "Screenshot2")
+![Screenshot3](/static/images/screen3.png?raw=true "Screenshot3")
+![Screenshot4](/static/images/screen4.png?raw=true "Screenshot4")
+![Screenshot5](/static/images/screen5.png?raw=true "Screenshot5")
 
 ## Deployment to Heroku
 This project is ready to run in Heroku.
