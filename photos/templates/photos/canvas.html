@@ -29,22 +29,26 @@
         {% for photo in photos %}
           {% if photo.publish %}
             <tr>
-              <td><img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}" style="width: 100%; height: auto;"></td>
+              <td>
+                <img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}" style="width: 100%; height: auto;">
+
+              </td>
               <td>{{ photo.uploaded_at }}</td>
-              <td><span class="likesnum">{{ photo.likes.count }}</span></td>
+              <td><span class="likesnum">{{ photo.get_num_of_likes }}</span></td>
               <td>
                 {% if user in photo.likes.all %}
-                  <a href="{% url 'likes:leave' %}"
-                    class="btn btn-outline-danger"> Unlike </a>
+                  <a href="{% url 'photos:like-toogle' slug=photo.slug %}"
+                    class="btn btn-danger"> Unlike </a>
                 {% else %}
-                  <a href="{% url 'likes:join' %}"
-                    class="btn btn-danger"> Like </a>
+                  <a href="{% url 'photos:like-toogle' slug=photo.slug %}"
+                    class="btn btn-outline-danger"> Like </a>
+                {% endif %}
+
 
                   <!-- <button type="button" class="btn btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="AddValue()">
                     Like
                   </button> -->
 
-                {% endif %}
 
                 <script>
                   var startingNumber = 0;

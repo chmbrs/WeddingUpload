@@ -4,6 +4,13 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.urls import reverse
+
+from django.views.generic.base import RedirectView
+
+from django.shortcuts import get_object_or_404
+
+from . import models
 
 from upload.models import Photo
 
@@ -18,9 +25,19 @@ class DocumentCreateView(CreateView):
         context['photos'] = photos
         return context
 
-# def home(request):
-#     articles = Article.objects.all().prefetch_related('likes')
-#     for a in articles:
-#         a.is_liked = (request.user in a.likes.all())
-#
-#     return render(request, 'home.html', {'articles': articles})
+class LikePhotoToogle(RedirectView):
+    #model = Photo
+
+    def get_redirect_url(self, *args, **kwargs):
+        slug = self.kwargs.get('slug')
+        print(f'This is the slug {slug}')
+        photo = get_object_or_404(Photo, slug=slug)
+
+        user = self.request.user
+        if user.is_authenticated:
+            if user in photo.likes.all():
+                photo.likes.remove(user)
+            else:
+                photo.likes.add(user)
+
+        return reverse_lazy('photos:canvas')

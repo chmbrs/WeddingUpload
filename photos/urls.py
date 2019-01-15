@@ -6,5 +6,6 @@ app_name = 'photos'
 
 urlpatterns = [
     path('', views.DocumentCreateView.as_view(template_name='photos/canvas.html'),
-    name='canvas')
+        name='canvas'),
+    path('like/<slug>/', views.LikePhotoToogle.as_view(), name='like-toogle'),
 ]
