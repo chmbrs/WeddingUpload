@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import Photos
+from .models import Photo
 
 # Register your models here.
-@admin.register(Photos)
+@admin.register(Photo)
 class DocumentAdmin(admin.ModelAdmin):
     list_display = ("upload", "uploaded_at", "publish" )
     list_editable = ["publish"]

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <h2>Upload Your Photo</h2>
+    <h4>for the bride to aprove it.</h4>
+
+  <!-- <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form> -->
+
+    <table>
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Uploaded at</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for photo in photos %}
+          {% if photo.publish %}
+            <tr>
+              <td><img src="{{ photo.upload.url }}" alt="{{ photo.upload.name }}"></td>
+              <td>{{ photo.uploaded_at }}</td>
+              <td>{{ photo.upload.size|filesizeformat }}</td>
+            </tr>
+          {% endif %}
+        {% empty %}
+          <tr>
+            <td colspan="3">No data.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h1> Welcome to Wedding Upload!</h1>
+      <h2>Please <a href="/accounts/login/">Log In</a> or <a href="/accounts/signup/">Sign Up</a> to view, upload and comment the photos.</h2>
+    {% endif %}
+
+{% endblock %}

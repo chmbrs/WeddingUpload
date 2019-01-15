@@ -29,11 +29,11 @@
             <a class="navbar-brand" href="{% url 'home' %}">Wedding Photos</a>
             <ul class="nav navbar-nav navbar-right">
               {% if user.is_authenticated %}
-                <li class="nav-item"><a href="#">Photos</a></li>
+                <li class="nav-item"><a href="{% url 'photos' %}">Photos</a></li>
                 <li class="nav-item"><a href="{% url 'upload' %}">Upload a Photo</a></li>
                 <li class="nav-item"><a href="{% url 'accounts:logout' %}">Log Out</a></li>
               {% else %}
-                <li class="nav-item"><a href="#">Photos</a></li>
+                <li class="nav-item"><a href="{% url 'photos' %}">Photos</a></li>
                 <li class="nav-item"><a href="{% url 'accounts:login' %}">Log In</a></li>
                 <li class="nav-item"><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
               {% endif %}
