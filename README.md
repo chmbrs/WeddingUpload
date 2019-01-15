@@ -1,30 +1,46 @@
-# Heroku Django Starter Template
+# WeddingUploader App
+# Heroku - Django - S3
 
-An utterly fantastic project starter template for Django 2.0.
+A simple upload app for wedding photos.
 
 ## Features
 
-- Production-ready configuration for Static Files, Database Settings, Gunicorn, etc.
-- Enhancements to Django's static file serving functionality via WhiteNoise.
-- Latest Python 3.6 runtime environment.
+- Upload photos directly to S3.
+- Approve or not the photos uploaded by the guests.
+- Like pictures and sort them.
+- Latest Python 3.6 runtime environment and Django 2.
 
 ## How to Use
 
-To use this project, follow these steps:
+To run in your local machine, follow these steps:
 
-1. Create your working environment.
-2. Install Django (`$ pipenv install django`)
-3. Create a new project using this template
+1. Create your working environment. `(venv)$ `
+2. Install the requirements. (`$ pip install -r requirements.txt`)
+3. Set your environment variables (ex: `$ export AWS_ACCESS_KEY_ID:xxx`) for the S3 bucket or put them on:
+   '../WeddingUpload/weddingupload/settings.py'
 
-## Creating Your Project
+```
+   AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+   AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+   AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME', '')
+```
+(replace with your credentials where the '' are)
 
-Using this template to create a new Django app is easy::
+*(for your safety, never, never commit your secret credential to any public repository)*
 
-    $ django-admin.py startproject --template=https://github.com/heroku/heroku-django-template/archive/master.zip --name=Procfile helloworld
+4. Run`(venv)$ python manage.py collectstatic` for sending the static files to S3.
+5. Run`(venv)$ python manage.py migrate` and `(venv)$ python manage.py makemigrations` to create the models in the DB
+6. Finally run`(venv)$ python manage.py runserver`
+If everything went well you should see something like this:
+```
+Performing system checks...
 
-(If this doesn't work on windows, replace `django-admin.py` with `django-admin`)
-
-You can replace ``helloworld`` with your desired project name.
+System check identified no issues (0 silenced).
+January 15, 2019 - 23:01:12
+Django version 2.1.5, using settings 'weddingupload.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
 
 ## Deployment to Heroku
 
@@ -35,15 +51,8 @@ You can replace ``helloworld`` with your desired project name.
     $ heroku create
     $ git push heroku master
 
-    $ heroku run python manage.py migrate
-
-See also, a [ready-made application](https://github.com/heroku/python-getting-started), ready to deploy.
-
+  and follow similar steps
 
 ## License: MIT
 
-## Further Reading
-
-- [Gunicorn](https://warehouse.python.org/project/gunicorn/)
-- [WhiteNoise](https://warehouse.python.org/project/whitenoise/)
-- [dj-database-url](https://warehouse.python.org/project/dj-database-url/)
+Feedback and improvements to the project is extremely welcome. =)

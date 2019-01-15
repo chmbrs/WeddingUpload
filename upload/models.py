@@ -15,7 +15,7 @@ class Photo(models.Model):
         return len(self.likes.all())
 
     def liked_by(self):
-        return ", gi".join([str(p) for p in self.likes.all()])
+        return ", ".join([str(p) for p in self.likes.all()])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.upload)
