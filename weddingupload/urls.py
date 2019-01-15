@@ -28,5 +28,5 @@ urlpatterns = [
     path('test/', views.TestPage.as_view(), name='test'),
     path('thanks/', views.ThanksPage.as_view(), name='thanks'),
     path('upload/', upload_views.DocumentCreateView.as_view(), name='upload'),
-    path('photos/', include('photos.urls', namespace='photos'), name='photos'),
+    path('photos/', include('photos.urls', namespace='photos')),
 ]
