@@ -31,6 +31,6 @@ urlpatterns = [
 ]
 
 # Admin Site Config
-admin.sites.AdminSite.site_header = 'Wedding Photos Administration Zone'
-admin.sites.AdminSite.site_title = 'WeddingUpload Administration'
-admin.sites.AdminSite.index_title = 'WeddingUpload Administration'
+admin.sites.AdminSite.site_header = 'Wedding Administration Zone'
+admin.sites.AdminSite.site_title = 'WeddingUpload Admin'
+admin.sites.AdminSite.index_title = 'Guests and Photos Administration'

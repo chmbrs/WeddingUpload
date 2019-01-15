@@ -34,7 +34,7 @@
 
               </td>
               <td>{{ photo.uploaded_at }}</td>
-              <td><span class="likesnum">{{ photo.get_num_of_likes }}</span></td>
+              <td><span class="likesnum">{{ photo.num_of_likes }}</span></td>
               <td>
                 {% if user in photo.likes.all %}
                   <a href="{% url 'photos:like-toogle' slug=photo.slug %}"
@@ -43,21 +43,6 @@
                   <a href="{% url 'photos:like-toogle' slug=photo.slug %}"
                     class="btn btn-outline-danger"> Like </a>
                 {% endif %}
-
-
-                  <!-- <button type="button" class="btn btn-outline-danger" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="AddValue()">
-                    Like
-                  </button> -->
-
-
-                <script>
-                  var startingNumber = 0;
-                    function AddValue()
-                    {
-                       startingNumber++;
-                       $('.likesnum').text(startingNumber);
-                    }
-                  </script>
               </td>
             </tr>
           {% endif %}

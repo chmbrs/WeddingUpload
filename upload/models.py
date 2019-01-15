@@ -11,8 +11,11 @@ class Photo(models.Model):
     publish = models.BooleanField(default=False, editable=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
 
-    def get_num_of_likes(self):
+    def num_of_likes(self):
         return len(self.likes.all())
+
+    def liked_by(self):
+        return ",".join([str(p) for p in self.likes.all()])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.upload)
