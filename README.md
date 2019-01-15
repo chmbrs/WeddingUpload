@@ -71,3 +71,5 @@ Ex:
 ## License: MIT
 
 Feedback and improvements to the project is extremely welcome. =)
+
+(All the images are labeled for reuse with modification)
