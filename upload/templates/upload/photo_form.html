@@ -8,11 +8,11 @@
 
     <div class="fileinput fileinput-new" data-provides="fileinput" style="max-height: 60vw;">
       <div class="fileinput-new thumbnail">
-        <img src="{% static 'images/upload.png' %}" alt="Upload" style="width: 100%; height:auto;">
+        <img src="{% static 'images/upload.png' %}" alt="Upload" style="max-width: 390px; height:400px;">
       </div>
       <div class="fileinput-preview fileinput-exists thumbnail" style="widht:100%;"></div>
         <!-- <span class="btn btn-primary btn-lg btn-block btn-file"><span class="fileinput-new">Select Image</span><span class="fileinput-exists">Change</span><input type="file" id="file-input"></span> -->
-        <div class="form-control form-control-lg">
+        <div class="form-control form-control-lg" style="max-width: 98%;">
           <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
@@ -20,6 +20,7 @@
             <input type="submit" class="btn btn-outline-primary btn-lg btn-block fileinput-exists" value="Upload Photo">
           </form>
       </div>
+    </div>
     {% else %}
       <h1> Welcome to Wedding Upload!</h1>
       <h2>Please <a href="/accounts/login/">Log In</a> or <a href="/accounts/signup/">Sign Up</a> to view, upload and comment the photos.</h2>
