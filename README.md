@@ -41,8 +41,16 @@ Django version 2.1.5, using settings 'weddingupload.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
+7. Create a superuser and enter the Django admin to approve and publish the uploaded photos.
+
 
 ## Deployment to Heroku
+This project is ready to run in Heroku.
+
+Export the S3 credentials to Heroku variables with the CLI or the web platform.
+Ex:
+`$ heroku config:set GITHUB_USERNAME=joesmith`
+
 
     $ git init
     $ git add -A
@@ -51,7 +59,7 @@ Quit the server with CONTROL-C.
     $ heroku create
     $ git push heroku master
 
-  and follow similar steps
+  and follow similar steps as above from step 4. (requirements are installed with pipfile.lock automatically when you push)
 
 ## License: MIT
 
