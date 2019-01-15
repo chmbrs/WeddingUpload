@@ -29,3 +29,8 @@ urlpatterns = [
     path('upload/', upload_views.DocumentCreateView.as_view(), name='upload'),
     path('photos/', include('photos.urls', namespace='photos')),
 ]
+
+# Admin Site Config
+admin.sites.AdminSite.site_header = 'Wedding Photos Administration Zone'
+admin.sites.AdminSite.site_title = 'WeddingUpload Administration'
+admin.sites.AdminSite.index_title = 'WeddingUpload Administration'

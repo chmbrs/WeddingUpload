@@ -8,7 +8,7 @@ class Photo(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     upload = models.FileField()
     likes = models.ManyToManyField(User, blank=True)
-    publish = models.BooleanField(default=True, editable=True)
+    publish = models.BooleanField(default=False, editable=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
 
     def get_num_of_likes(self):
