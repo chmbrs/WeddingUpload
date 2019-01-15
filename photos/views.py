@@ -10,8 +10,6 @@ from django.views.generic.base import RedirectView
 
 from django.shortcuts import get_object_or_404
 
-from . import models
-
 from upload.models import Photo
 
 class DocumentCreateView(CreateView):
@@ -26,11 +24,8 @@ class DocumentCreateView(CreateView):
         return context
 
 class LikePhotoToogle(RedirectView):
-    #model = Photo
-
     def get_redirect_url(self, *args, **kwargs):
         slug = self.kwargs.get('slug')
-        print(f'This is the slug {slug}')
         photo = get_object_or_404(Photo, slug=slug)
 
         user = self.request.user

@@ -2,11 +2,16 @@
 {% load staticfiles %}
 
 {% block content %}
-  <h1> Welcome to Wedding Upload!</h1>
+  <h1> Welcome {{ user.get_username }}!</h1>
+
   {% if user.is_authenticated %}
-  {% else %}
-    <h2>Please <a href="/accounts/login/">Log In</a> or <a href="/accounts/signup/">Sign Up</a> to view, upload and comment the photos.</h2>
+  <h5>Please select one to continue:</h5>
+  <div>
+      <a class="btn btn-info btn-lg" href="{% url 'photos:canvas' %}">See the Photos</a>
+      <a class="btn btn-info btn-lg" href="{% url 'upload' %}">Upload a Photo</a>
+  </div>
+    {% else %}
+    <h2>Please <a class="btn btn-outline-success" href="{% url 'accounts:login' %}">Log In </a> or <a class="btn btn-outline-dark" href="{% url 'accounts:signup' %}">Sign Up</a> to view, upload and comment the photos.</h2>
   {% endif %}
 
-  <img src="{% static 'images/wedding.jpg' %}" alt="Wedding Pic">
 {% endblock %}

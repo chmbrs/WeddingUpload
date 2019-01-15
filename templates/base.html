@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Wedding Photos</title>
+        <title>WeddingUpload</title>
 
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
         <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
@@ -28,21 +28,25 @@
 
     <body>
 
-        <nav class="navbar mynav" role="navigation" id="navbar">
-
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" role="navigation" id="navbar">
           <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Wedding Photos</a>
-            <ul class="nav navbar-nav navbar-right">
-              {% if user.is_authenticated %}
-                <li class="nav-item"><a href="{% url 'photos:canvas' %}">Photos</a></li>
-                <li class="nav-item"><a href="{% url 'upload' %}">Upload a Photo</a></li>
-                <li class="nav-item"><a href="{% url 'accounts:logout' %}">Log Out</a></li>
-              {% else %}
-                <li class="nav-item"><a href="{% url 'photos:canvas' %}">Photos</a></li>
-                <li class="nav-item"><a href="{% url 'accounts:login' %}">Log In</a></li>
-                <li class="nav-item"><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
-              {% endif %}
-            </ul>
+            <a class="navbar-brand" href="{% url 'home' %}">Wedding Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                  <li class="nav-item"><a class="btn btn-outline-info" href="{% url 'photos:canvas' %}">Photos</a></li>
+                  <li class="nav-item"><a class="btn btn-outline-info" href="{% url 'upload' %}">Upload a Photo</a></li>
+                  <li class="nav-item"><a class="btn btn-outline-secondary" href="{% url 'accounts:logout' %}">Log Out</a></li>
+                {% else %}
+                  <li class="nav-item"><a class="btn btn-outline-success" href="{% url 'accounts:login' %}">Log In </a></li>
+                  <li class="nav-item"><a class="btn btn-outline-dark" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                {% endif %}
+              </ul>
+            </div>
 
           </div>
         </nav>

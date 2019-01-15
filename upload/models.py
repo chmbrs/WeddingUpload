@@ -3,13 +3,6 @@ from django.contrib.auth.models import User
 
 from django.utils.text import slugify
 
-from django import template
-register = template.Library()
-
-from photos.models import Like
-# from django.apps import apps
-# Like = apps.get_model('photos', 'Like')
-
 
 class Photo(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
