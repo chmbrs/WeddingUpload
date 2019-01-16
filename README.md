@@ -14,8 +14,8 @@ A simple upload app for wedding photos.
 
 To run in your local machine, follow these steps:
 
-1. Create your working environment. `(venv)$ `
-2. Install the requirements. (`$ pip install -r requirements.txt`)
+1. Create your working environment. `$ python3 -m venv /path/to/venv`
+2. Install the requirements. (`(venv)$ pip install -r requirements.txt`)
 3. Set your environment variables (ex: `$ export AWS_ACCESS_KEY_ID:xxx`) for the S3 bucket or put them on:
    '../WeddingUpload/weddingupload/settings.py'
 
@@ -66,11 +66,13 @@ Ex:
     $ heroku create
     $ git push heroku master
 
-  and follow similar steps as above from step 4. (requirements are installed with pipfile.lock automatically when you push)
+  and follow similar steps as above from step 4 but in Heroku's server. (requirements are installed with pipfile.lock automatically when you push)
+  Ex:
+  `$ heroku run python manage.py migrate`
+
 
 ## License: MIT
 
 Feedback and improvements to the project is extremely welcome. =)
 
 (All the images used are labeled for reuse with modification)
-Made with love.
