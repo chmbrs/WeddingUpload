@@ -14,6 +14,7 @@ A simple upload app for wedding photos.
 
 To run in your local machine, follow these steps:
 
+0. Clone the repository or download the zip.
 1. Create your working environment. `$ python3 -m venv /path/to/venv`
 2. Install the requirements. (`(venv)$ pip install -r requirements.txt`)
 3. Set your environment variables (ex: `$ export AWS_ACCESS_KEY_ID:xxx`) for the S3 bucket or put them on:
