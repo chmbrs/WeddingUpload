@@ -72,4 +72,5 @@ Ex:
 
 Feedback and improvements to the project is extremely welcome. =)
 
-(All the images are labeled for reuse with modification)
+(All the images used are labeled for reuse with modification)
+Made with love.
